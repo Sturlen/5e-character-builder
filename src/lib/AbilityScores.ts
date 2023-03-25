@@ -1,3 +1,5 @@
+import type { BaseBackground } from './backgrounds'
+
 export type AbilityScore = {
     name: string
     desc: string
@@ -97,6 +99,7 @@ export type Character = {
     // personal_details
     as: AbilityScoreArray
     race: Race
+    background: BaseBackground
 }
 
 export type BaseRace = {

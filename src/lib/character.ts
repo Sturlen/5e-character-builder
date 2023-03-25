@@ -1,5 +1,8 @@
 import races from './API/races.json'
-import { APIResponseSchema, RaceSchema } from './parsers/races'
+import BackgroundsResponse from '$lib/API/backgrounds.json'
+import type { BaseBackground } from '$lib/backgrounds'
+
+import { RaceSchema } from './parsers/races'
 import type {
     AbilityScoreArray,
     Character,
@@ -10,6 +13,10 @@ import type {
 } from './AbilityScores'
 
 import { createAS } from './AbilityScores'
+import { BaseBackgroundSchema } from './parsers/backgrounds'
+
+export const backgrounds = BackgroundsResponse.results.map((b) => BaseBackgroundSchema.parse(b))
+console.log(backgrounds)
 
 const BaseAttributes: AbilityScoreArray = {
     Strength: 10,
@@ -73,15 +80,33 @@ const Dwarf_Hill = tailorRace(DwarfBase, HillDwarf)
 
 const Human_Standard = tailorRace(HumanBase)
 
-export function CreateCharacter({ race }: { race: Race }): Character {
+export function CreateCharacter({
+    race,
+    background
+}: {
+    race: Race
+    background: BaseBackground
+}): Character {
     const as = sumAbilityScores(BaseAttributes, createAS(race.asi))
-    return { as, race }
+    return { as, race, background }
 }
 
-export function createBasicCharacter(baseRace: BaseRace, baseSubrace: BaseSubrace | undefined) {
+const NullBackground: BaseBackground = {
+    name: 'None',
+    langProfs: [],
+    skillProfs: [],
+    toolProfs: []
+}
+
+export function createBasicCharacter(
+    baseRace: BaseRace,
+    baseSubrace: BaseSubrace | undefined,
+    BaseBackground: BaseBackground | undefined
+) {
     const subrace = baseSubrace ? tailorSubrace(baseSubrace) : undefined
     const race = tailorRace(baseRace, subrace)
-    return CreateCharacter({ race })
+    const background = BaseBackground ?? NullBackground
+    return CreateCharacter({ race, background })
 }
 
 // From SRD 5.1
@@ -90,11 +115,13 @@ function abilityScoreModifier(AbilityScore: number) {
 }
 
 const TestHuman = CreateCharacter({
-    race: Human_Standard
+    race: Human_Standard,
+    background: NullBackground
 })
 
 const TestHillDwarf = CreateCharacter({
-    race: Dwarf_Hill
+    race: Dwarf_Hill,
+    background: NullBackground
 })
 
 console.log('Hill Dwarf Wisdom score is 11', TestHillDwarf.as.Wisdom === 11)
@@ -114,7 +141,8 @@ const hill_dwarf_sub = tailorSubrace(parsedHillDw)
 const hill_dwarf_race = tailorRace(parsedBaseDwarf, hill_dwarf_sub)
 
 const parsed_dwarf = CreateCharacter({
-    race: hill_dwarf_race ?? Human_Standard
+    race: hill_dwarf_race ?? Human_Standard,
+    background: NullBackground
 })
 
 console.log('Hill Dwarf Wisdom score is 11', parsed_dwarf.as.Wisdom === 11, parsed_dwarf)
