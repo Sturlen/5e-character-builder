@@ -9,6 +9,7 @@ specifiers:
   '@types/cookie': ^0.5.1
   '@typescript-eslint/eslint-plugin': ^5.45.0
   '@typescript-eslint/parser': ^5.45.0
+  '@untemps/svelte-use-tooltip': ^2.8.0
   eslint: ^8.28.0
   eslint-config-prettier: ^8.5.0
   eslint-plugin-svelte3: ^4.0.0
@@ -20,6 +21,9 @@ specifiers:
   typescript: ^5.0.0
   vite: ^4.2.0
   vitest: ^0.25.3
+
+dependencies:
+  '@untemps/svelte-use-tooltip': 2.8.0
 
 devDependencies:
   '@fontsource/fira-mono': 4.5.10
@@ -43,6 +47,13 @@ devDependencies:
   vitest: 0.25.8
 
 packages:
+
+  /@babel/runtime/7.21.0:
+    resolution: {integrity: sha512-xwII0//EObnq89Ji5AKYQaRYiW/nZ3llSv29d49IuxPhKbtJoLP+9QUUZ4nVragQVtaVGeZrpB+ZtG/Pdy/POw==}
+    engines: {node: '>=6.9.0'}
+    dependencies:
+      regenerator-runtime: 0.13.11
+    dev: false
 
   /@esbuild/android-arm/0.17.13:
     resolution: {integrity: sha512-5tZZ/hLIfBmt7E8JsE5KbsknoAFmoElkg+A/gjyPtmSQvJjPf+9GsSJihid8VMa08lrsYyaEXOT9RLh3xXQONw==}
@@ -574,6 +585,25 @@ packages:
       '@typescript-eslint/types': 5.56.0
       eslint-visitor-keys: 3.3.0
     dev: true
+
+  /@untemps/dom-observer/2.0.0:
+    resolution: {integrity: sha512-oZBj7j9hYSbuveNFvyPLamRfNh15KvGJC5pLGGpWVcO61EzISMESL0wudwP0UZETEu+0WfaJ16rGXtEZHsq+xw==}
+    dev: false
+
+  /@untemps/svelte-use-tooltip/2.8.0:
+    resolution: {integrity: sha512-rXzYyU1JzKucyjAr4J+byrDUk0eFhwC8ggiitJE/v945OJDjjA29dA2d+DTjyppqlm2ZQZzGHYKY5hrdRKdrAg==}
+    dependencies:
+      '@untemps/dom-observer': 2.0.0
+      '@untemps/utils': 2.6.0
+      svelte: 3.49.0
+    dev: false
+
+  /@untemps/utils/2.6.0:
+    resolution: {integrity: sha512-3B5bb4iYkh2h86vqtY8+Mo9vdX1s/NT1cltWpS4U3/WHXFgy/4lJ9180vELJv01MbNNhjlZPtJCMtBp7Fpsb1Q==}
+    engines: {node: '>=14.17'}
+    dependencies:
+      '@babel/runtime': 7.21.0
+    dev: false
 
   /acorn-jsx/5.3.2_acorn@8.8.2:
     resolution: {integrity: sha512-rq9s+JNhf0IChjtDXxllJ7g41oZk5SlXtp0LHwyA5cejwn7vKmKp4pPri6YEePv2PU65sAsegbXtIinmDFDXgQ==}
@@ -1476,6 +1506,10 @@ packages:
       picomatch: 2.3.1
     dev: true
 
+  /regenerator-runtime/0.13.11:
+    resolution: {integrity: sha512-kY1AZVr2Ra+t+piVaJ4gxaFaReZVH40AKNo7UCX6W+dEwBo/2oZJzqfuN1qLq1oL45o56cPaTXELwrTh8Fpggg==}
+    dev: false
+
   /resolve-from/4.0.0:
     resolution: {integrity: sha512-pb/MYmXstAkysRFx8piNI1tGFNQIFA3vkE3Gq4EuA1dF6gHp/+vgZqsCGJapvy8N3Q+4o7FwvquPJcnZ7RYy4g==}
     engines: {node: '>=4'}
@@ -1721,6 +1755,11 @@ packages:
       svelte: 3.57.0
       typescript: 4.9.5
     dev: true
+
+  /svelte/3.49.0:
+    resolution: {integrity: sha512-+lmjic1pApJWDfPCpUUTc1m8azDqYCG1JN9YEngrx/hUyIcFJo6VZhj0A1Ai0wqoHcEIuQy+e9tk+4uDgdtsFA==}
+    engines: {node: '>= 8'}
+    dev: false
 
   /svelte/3.57.0:
     resolution: {integrity: sha512-WMXEvF+RtAaclw0t3bPDTUe19pplMlfyKDsixbHQYgCWi9+O9VN0kXU1OppzrB9gPAvz4NALuoca2LfW2bOjTQ==}
