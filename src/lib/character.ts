@@ -73,9 +73,15 @@ const Dwarf_Hill = tailorRace(DwarfBase, HillDwarf)
 
 const Human_Standard = tailorRace(HumanBase)
 
-function CreateCharacter({ race }: { race: Race }): Character {
+export function CreateCharacter({ race }: { race: Race }): Character {
     const as = sumAbilityScores(BaseAttributes, createAS(race.asi))
     return { as, race }
+}
+
+export function createBasicCharacter(baseRace: BaseRace, baseSubrace: BaseSubrace | undefined) {
+    const subrace = baseSubrace ? tailorSubrace(baseSubrace) : undefined
+    const race = tailorRace(baseRace, subrace)
+    return CreateCharacter({ race })
 }
 
 // From SRD 5.1
@@ -97,7 +103,7 @@ const response = races
 
 const results = response.results.map((raw) => RaceSchema.parse(raw))
 
-const parsed_races: BaseRace[] = results.map((race) => {
+export const parsed_races: BaseRace[] = results.map((race) => {
     return { name: race.name, asi: createAS(race.asi), subraces: race.subraces }
 })
 
