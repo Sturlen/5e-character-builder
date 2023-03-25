@@ -38,6 +38,7 @@
     },
     "type": "module",
     "dependencies": {
-        "@untemps/svelte-use-tooltip": "^2.8.0"
+        "@untemps/svelte-use-tooltip": "^2.8.0",
+        "zod": "^3.21.4"
     }
 }
