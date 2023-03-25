@@ -1,4 +1,4 @@
-import { readFileSync } from 'fs'
+import races from './API/races.json'
 import { APIResponseSchema, RaceSchema } from './parsers/races'
 import type {
     AbilityScoreArray,
@@ -75,7 +75,7 @@ const Human_Standard = tailorRace(HumanBase)
 
 function CreateCharacter({ race }: { race: Race }): Character {
     const as = sumAbilityScores(BaseAttributes, createAS(race.asi))
-    return { as }
+    return { as, race }
 }
 
 // From SRD 5.1
@@ -93,8 +93,7 @@ const TestHillDwarf = CreateCharacter({
 
 console.log('Hill Dwarf Wisdom score is 11', TestHillDwarf.as.Wisdom === 11)
 
-const races_file = JSON.parse(readFileSync('./API/races.json', { encoding: 'utf-8' }))
-const response = APIResponseSchema.parse(races_file)
+const response = races
 
 const results = response.results.map((raw) => RaceSchema.parse(raw))
 
@@ -113,3 +112,5 @@ const parsed_dwarf = CreateCharacter({
 })
 
 console.log('Hill Dwarf Wisdom score is 11', parsed_dwarf.as.Wisdom === 11, parsed_dwarf)
+
+export { createAS, abilityScoreModifier, parsed_dwarf, Human_Standard, TestHuman }

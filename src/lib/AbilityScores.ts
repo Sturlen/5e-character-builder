@@ -96,6 +96,7 @@ export type AbilityName =
 export type Character = {
     // personal_details
     as: AbilityScoreArray
+    race: Race
 }
 
 export type BaseRace = {
