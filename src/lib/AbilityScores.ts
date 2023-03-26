@@ -39,7 +39,7 @@ const Charisma: AbilityScore = {
     icon_src: 'https://game-icons.net/icons/ffffff/000000/1x1/lorc/drama-masks.svg'
 }
 
-const AbilityScoreInfos = {
+export const AbilityScoreInfo = {
     Strength,
     Dexterity,
     Constitution,
@@ -93,7 +93,7 @@ export type Character = {
 
 export type BaseRace = {
     name: string
-    asi: OptionalAbilityScoreArray
+    asi: AbilityScoreArray
     options: Option[]
     subraces: BaseSubrace[]
 }
@@ -108,19 +108,19 @@ export type AbilityScoreOption = {
 
 export type Race = {
     base: BaseRace
-    asi: OptionalAbilityScoreArray
+    asi: AbilityScoreArray
     subrace?: Subrace
 }
 
 export type BaseSubrace = {
     name: string
-    asi: OptionalAbilityScoreArray
+    asi: AbilityScoreArray
     options: Option[]
 }
 
 export type Subrace = {
     base: BaseSubrace
-    asi: OptionalAbilityScoreArray
+    asi: AbilityScoreArray
 }
 
 export function createAS(as: OptionalAbilityScoreArray = {}): AbilityScoreArray {

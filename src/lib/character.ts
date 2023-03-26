@@ -29,9 +29,9 @@ const BaseAttributes: AbilityScoreArray = {
 
 const HillDwarfBase: BaseSubrace = {
     name: 'Hill Dwarf',
-    asi: {
+    asi: createAS({
         Wisdom: 1
-    },
+    }),
     options: []
 }
 
