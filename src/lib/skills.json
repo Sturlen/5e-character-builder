@@ -1,0 +1,128 @@
+{
+    "Acrobatics": {
+        "description": "You can attempt to perform acrobatic stunts or gymnastic feats, including dives, rolls, somersaults, and flips.",
+        "check": "Your Dexterity (Acrobatics) check covers your attempt to stay on your feet in a tricky situation, such as when you're trying to run across asheet of ice, balance on a tightrope, or stay upright on a rocking ship's deck.",
+        "as": "Dexterity",
+        "page_no": 80,
+        "name": "Acrobatics"
+    },
+    "Animal Handling": {
+        "description": "You can calm down or train an animal, or even get it to do something it wouldn't normally do.",
+        "check": "When there is any question whether you can calm down a domesticated animal, keep a mount from getting spooked, or intuit an animal's intentions, the GM might call for a Wisdom(Animal Handling) check.",
+        "as": "Wisdom",
+        "page_no": 82,
+        "name": "Animal Handling"
+    },
+    "Arcana": {
+        "description": "You can recall lore about spells, magic items, eldritch symbols, magical traditions, the planes of existence, and the inhabitants of those planes.",
+        "check": "Your Intelligence (Arcana) check measures your ability to recall lore about spells, magic items, eldritch symbols, magical traditions, the planes of existence, and the inhabitants of those planes.",
+        "as": "Intelligence",
+        "page_no": 81,
+        "name": "Arcana"
+    },
+    "Athletics": {
+        "description": "You can attempt to climb, jump, swim, or run over long distances.",
+        "check": "Your Strength (Athletics) check covers difficult situations you encounter while climbing, jumping, or swimming.",
+        "as": "Strength",
+        "page_no": 79,
+        "name": "Athletics"
+    },
+    "Deception": {
+        "description": "You are skilled at lying and tricking others.",
+        "check": "Your Charisma (Deception) check determines whether you can convincingly hide the truth, either verbally or through your actions. This deception can encompass everything from misleading others through ambiguity to telling outright lies.",
+        "as": "Charisma",
+        "page_no": 82,
+        "name": "Deception"
+    },
+    "History": {
+        "description": "You have a good memory and can recall important historical events, people, and places.",
+        "check": "Your Intelligence (History) check measures your ability to recall lore about historical events, legendary people, ancient kingdoms, past disputes, recent wars, and lost civilizations.",
+        "as": "Intelligence",
+        "page_no": 81,
+        "name": "History"
+    },
+    "Insight": {
+        "description": "You can sense motives and discern truth from lies.",
+        "check": "Your Wisdom (Insight) check decides whether you can determine the true intentions of a creature, such as when searching out a lie or predicting someone's next move.",
+        "as": "Wisdom",
+        "page_no": 82,
+        "name": "Insight"
+    },
+    "Intimidation": {
+        "description": "You are adept at threatening others and making them afraid of you.",
+        "check": "When you attempt to influence someone through overt threats, hostile actions, and physical violence, the GM might ask you to make a Charisma (Intimidation) check.",
+        "as": "Charisma",
+        "page_no": 82,
+        "name": "Intimidation"
+    },
+    "Investigation": {
+        "description": "You have a keen eye for detail and can spot clues that others might miss.",
+        "check": "When you look around for clues and make deductions based on those clues, you make an Intelligence (Investigation) check.",
+        "as": "Intelligence",
+        "page_no": 81,
+        "name": "Investigation"
+    },
+    "Medicine": {
+        "description": "You can tend to the wounds of others and diagnose illnesses.",
+        "check": "A Wisdom (Medicine) check lets you try to stabilize a dying companion or diagnose an illness.",
+        "as": "Wisdom",
+        "page_no": 82,
+        "name": "Medicine"
+    },
+    "Nature": {
+        "description": "You are knowledgeable about the natural world and can identify plants and animals, track creatures, and predict the weather.",
+        "check": "Your Intelligence (Nature) check measures your ability to recall lore about terrain, plants and animals, the weather, and natural cycles.",
+        "as": "Intelligence",
+        "page_no": 81,
+        "name": "Nature"
+    },
+    "Perception": {
+        "description": "You are adept at spotting things that are hidden or out of place.",
+        "check": "Your Wisdom (Perception) check lets you spot, hear, or otherwise detect the presence of something.",
+        "as": "Wisdom",
+        "page_no": 82,
+        "name": "Perception"
+    },
+    "Performance": {
+        "description": "You are skilled at entertaining others with music, dance, acting, storytelling, or some other form of performance.",
+        "check": "Your Charisma (Performance) check determines how well you can delight an audience with music, dance, acting, storytelling, or some other form of entertainment.",
+        "as": "Charisma",
+        "page_no": 82,
+        "name": "Performance"
+    },
+    "Persuasion": {
+        "description": "You are skilled at convincing others to do what you want, using charm, logic, or threats.",
+        "check": "When you attempt to influence someone or a group of people with tact, social graces, or good nature, the GM might ask you to make a Charisma (Persuasion) check.",
+        "as": "Charisma",
+        "page_no": 82,
+        "name": "Persuasion"
+    },
+    "Religion": {
+        "description": "You are knowledgeable about the religions of the world and can identify religious symbols and practices, as well as recall important religious events and people.",
+        "check": "Your Intelligence (Religion) check measures your ability to recall lore about deities, rites and prayers, religious hierarchies, holy symbols, and the practices of secret cults.",
+        "as": "Intelligence",
+        "page_no": 81,
+        "name": "Religion"
+    },
+    "Sleight of Hand": {
+        "description": "You are skilled at pickpocketing, palming objects, and performing other feats of manual dexterity.",
+        "check": "Whenever you attempt an act of legerdemain or manual trickery, such as planting something on someone else or concealing an objecton your person, make a Dexterity (Sleight of Hand) check.",
+        "as": "Dexterity",
+        "page_no": 80,
+        "name": "Sleight of Hand"
+    },
+    "Stealth": {
+        "description": "You are skilled at moving quietly and sneaking past obstacles.",
+        "check": "Make a Dexterity (Stealth) check when you attempt to conceal yourself from enemies, slink past guards, slip away without being noticed, or sneak up on someone without being seen or heard.",
+        "as": "Dexterity",
+        "page_no": 80,
+        "name": "Stealth"
+    },
+    "Survival": {
+        "description": "You have experience living in the wilderness and can navigate through the natural world, find food and water, and track creatures.",
+        "check": "The GM might ask you to make a Wisdom (Survival) check to follow tracks, hunt wildgame, guide your group through frozen wastelands, identify signs that owlbears live nearby, predict the weather, or avoid quicksand and other natural hazards.",
+        "as": "Wisdom",
+        "page_no": 82,
+        "name": "Survival"
+    }
+}
