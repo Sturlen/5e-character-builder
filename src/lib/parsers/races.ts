@@ -52,11 +52,12 @@ export const RaceSchema = z
     .object({
         name: z.string(),
         asi: ASISchema,
-        subraces: z.array(SubraceSchema)
+        subraces: z.array(SubraceSchema),
+        _languages: z.array(z.string())
     })
-    .transform(({ name, asi, subraces }): BaseRace => {
+    .transform(({ name, asi, subraces, _languages }): BaseRace => {
         const { abilites, options } = parseASI(asi)
-        return { name, asi: abilites, options, subraces }
+        return { name, asi: abilites, options, subraces, languages: _languages }
     })
 
 export const APIResponseSchema = z.object({

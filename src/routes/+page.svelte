@@ -43,13 +43,15 @@
             <option value={background}>{background.name}</option>
         {/each}
     </select>
-
-    {#each character.background.langProfs as prof}
+    <p>Languages</p>
+    {#each character.languages as prof}
         <span>{prof}</span>
     {/each}
+    <p>Skill Proficiencies</p>
     {#each character.background.skillProfs as prof}
         <span>{prof}</span>
     {/each}
+    <p>Tool Proficiencies</p>
     {#each character.background.toolProfs as prof}
         <span>{prof}</span>
     {/each}

@@ -89,6 +89,7 @@ export type Character = {
     as: AbilityScoreArray
     race: Race
     background: BaseBackground
+    languages: string[]
 }
 
 export type BaseRace = {
@@ -96,6 +97,7 @@ export type BaseRace = {
     asi: AbilityScoreArray
     options: Option[]
     subraces: BaseSubrace[]
+    languages: string[]
 }
 
 /** Character creation choice */

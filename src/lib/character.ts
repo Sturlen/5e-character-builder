@@ -39,7 +39,8 @@ const DwarfBase: BaseRace = {
     name: 'Dwarf',
     asi: createAS({ Constitution: 2 }),
     options: [],
-    subraces: [HillDwarfBase]
+    subraces: [HillDwarfBase],
+    languages: ['Common', 'Dwarvish']
 }
 
 const HumanBase: BaseRace = {
@@ -53,7 +54,8 @@ const HumanBase: BaseRace = {
         Charisma: 1
     },
     options: [],
-    subraces: []
+    subraces: [],
+    languages: ['Common']
 }
 
 function sumAbilityScores(l: AbilityScoreArray, r: AbilityScoreArray): AbilityScoreArray {
@@ -91,7 +93,8 @@ export function CreateCharacter({
     background: BaseBackground
 }): Character {
     const as = sumAbilityScores(BaseAttributes, createAS(race.asi))
-    return { as, race, background }
+    const languages = [...new Set([...race.base.languages, ...background.langProfs])] // find a better way to make unique
+    return { as, race, background, languages }
 }
 
 const NullBackground: BaseBackground = {
@@ -109,6 +112,7 @@ export function createBasicCharacter(
     const subrace = baseSubrace ? tailorSubrace(baseSubrace) : undefined
     const race = tailorRace(baseRace, subrace)
     const background = BaseBackground ?? NullBackground
+
     return CreateCharacter({ race, background })
 }
 
