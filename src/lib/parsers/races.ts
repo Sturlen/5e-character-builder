@@ -1,28 +1,42 @@
 import { z, type TypeOf } from 'zod'
 
-import type { AbilityScoreAdvancements, BaseRace, BaseSubrace } from '../AbilityScores'
+import {
+    createAS,
+    type AbilityScoreArray,
+    type BaseRace,
+    type BaseSubrace,
+    type AbilityScoreOption,
+    type Option
+} from '../AbilityScores'
 
-export const ASISchema = z
-    .array(
-        z.object({
-            attributes: z.array(z.string()).nonempty(),
-            value: z.number().int()
-        })
-    )
-    .transform((asi): AbilityScoreAdvancements => {
-        function getValue(ability: string) {
-            return asi.find((asi_element) => asi_element.attributes[0] === ability)?.value
-        }
-        return {
-            Strength: getValue('Strength'),
-            Dexterity: getValue('Dexterity'),
-            Constitution: getValue('Constitution'),
-            Intelligence: getValue('Intelligence'),
-            Wisdom: getValue('Wisdom'),
-            Charisma: getValue('Charisma'),
-            Options: asi.filter((element) => element.attributes[0] === 'Option').map((e) => e.value)
-        }
+export const ASISchema = z.array(
+    z.object({
+        attributes: z
+            .array(z.string())
+            .nonempty()
+            .transform((attrs) => attrs[0]),
+        value: z.number().int()
     })
+)
+
+export type ASI = TypeOf<typeof ASISchema>
+
+function parseASI(asi: ASI): { abilites: AbilityScoreArray; options: Option[] } {
+    const abilites = createAS({
+        Strength: asi.find((item) => item.attributes === 'Strength')?.value,
+        Dexterity: asi.find((item) => item.attributes === 'Dexterity')?.value,
+        Constitution: asi.find((item) => item.attributes === 'Constitution')?.value,
+        Intelligence: asi.find((item) => item.attributes === 'Intelligence')?.value,
+        Wisdom: asi.find((item) => item.attributes === 'Wisdom')?.value,
+        Charisma: asi.find((item) => item.attributes === 'Charisma')?.value
+    })
+    const options: AbilityScoreOption[] = asi
+        .filter((item) => item.attributes === 'Option')
+        .map((item) => {
+            return { type: 'asi', amount: item.value }
+        })
+    return { abilites, options }
+}
 
 export const SubraceSchema = z
     .object({
@@ -30,7 +44,8 @@ export const SubraceSchema = z
         asi: ASISchema
     })
     .transform(({ name, asi }): BaseSubrace => {
-        return { name, asi }
+        const { abilites, options } = parseASI(asi)
+        return { name, asi: abilites, options }
     })
 
 export const RaceSchema = z
@@ -40,7 +55,8 @@ export const RaceSchema = z
         subraces: z.array(SubraceSchema)
     })
     .transform(({ name, asi, subraces }): BaseRace => {
-        return { name, asi, subraces }
+        const { abilites, options } = parseASI(asi)
+        return { name, asi: abilites, options, subraces }
     })
 
 export const APIResponseSchema = z.object({

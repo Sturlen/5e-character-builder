@@ -57,17 +57,6 @@ export type AbilityScoreArray = {
     Charisma: number
 }
 
-export type AbilityScoreAdvancements = {
-    Strength?: number
-    Dexterity?: number
-    Constitution?: number
-    Intelligence?: number
-    Wisdom?: number
-    Charisma?: number
-    /**Number of choices and their modifiers */
-    Options?: number[]
-}
-
 export type OptionalAbilityScoreArray = {
     Strength?: number
     Dexterity?: number
@@ -104,8 +93,17 @@ export type Character = {
 
 export type BaseRace = {
     name: string
-    asi: AbilityScoreAdvancements
+    asi: OptionalAbilityScoreArray
+    options: Option[]
     subraces: BaseSubrace[]
+}
+
+/** Character creation choice */
+export type Option = AbilityScoreOption
+
+export type AbilityScoreOption = {
+    type: 'asi'
+    amount: number
 }
 
 export type Race = {
@@ -116,17 +114,17 @@ export type Race = {
 
 export type BaseSubrace = {
     name: string
-    asi: AbilityScoreAdvancements
+    asi: OptionalAbilityScoreArray
+    options: Option[]
 }
 
 export type Subrace = {
     base: BaseSubrace
     asi: OptionalAbilityScoreArray
+    options: Option[]
 }
 
-export function createAS(
-    as: OptionalAbilityScoreArray | AbilityScoreAdvancements = {}
-): AbilityScoreArray {
+export function createAS(as: OptionalAbilityScoreArray = {}): AbilityScoreArray {
     return {
         Strength: as.Strength || 0,
         Dexterity: as.Dexterity || 0,
