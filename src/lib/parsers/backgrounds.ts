@@ -27,13 +27,13 @@ export const BaseBackgroundSchema = z
         name: z.string(),
         skill_proficiencies: z.string().nullish().transform(splitProfs),
         tool_proficiencies: z.string().nullish().transform(splitProfs),
-        languages: z.string().nullish().transform(splitProfs)
+        _languages: z.array(z.string())
     })
-    .transform(({ name, skill_proficiencies, tool_proficiencies, languages }): BaseBackground => {
+    .transform(({ name, skill_proficiencies, tool_proficiencies, _languages }): BaseBackground => {
         return {
             name,
             skillProfs: skill_proficiencies,
             toolProfs: tool_proficiencies,
-            langProfs: languages
+            langProfs: _languages
         }
     })
