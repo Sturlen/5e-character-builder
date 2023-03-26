@@ -27,7 +27,9 @@
             <option value={race}>{race.name}</option>
         {/each}
     </select>
-    <p>{chosen_race.name}</p>
+    {#each chosen_race.options as option}
+        <p>+{option.amount} to a chosen attribute</p>
+    {/each}
     {#if available_subraces.length > 0}
         <select bind:value={chosen_subrace}>
             {#each available_subraces as subrace}

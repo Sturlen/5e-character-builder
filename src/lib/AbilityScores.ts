@@ -121,7 +121,6 @@ export type BaseSubrace = {
 export type Subrace = {
     base: BaseSubrace
     asi: OptionalAbilityScoreArray
-    options: Option[]
 }
 
 export function createAS(as: OptionalAbilityScoreArray = {}): AbilityScoreArray {

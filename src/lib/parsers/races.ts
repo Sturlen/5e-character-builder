@@ -13,7 +13,7 @@ export const ASISchema = z.array(
     z.object({
         attributes: z
             .array(z.string())
-            .nonempty()
+            .length(1)
             .transform((attrs) => attrs[0]),
         value: z.number().int()
     })
@@ -31,7 +31,7 @@ function parseASI(asi: ASI): { abilites: AbilityScoreArray; options: Option[] } 
         Charisma: asi.find((item) => item.attributes === 'Charisma')?.value
     })
     const options: AbilityScoreOption[] = asi
-        .filter((item) => item.attributes === 'Option')
+        .filter((item) => item.attributes === 'Other')
         .map((item) => {
             return { type: 'asi', amount: item.value }
         })

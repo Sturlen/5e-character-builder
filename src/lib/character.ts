@@ -31,12 +31,14 @@ const HillDwarfBase: BaseSubrace = {
     name: 'Hill Dwarf',
     asi: {
         Wisdom: 1
-    }
+    },
+    options: []
 }
 
 const DwarfBase: BaseRace = {
     name: 'Dwarf',
     asi: createAS({ Constitution: 2 }),
+    options: [],
     subraces: [HillDwarfBase]
 }
 
@@ -50,6 +52,7 @@ const HumanBase: BaseRace = {
         Wisdom: 1,
         Charisma: 1
     },
+    options: [],
     subraces: []
 }
 
@@ -130,9 +133,7 @@ const response = races
 
 const results = response.results.map((raw) => RaceSchema.parse(raw))
 
-export const parsed_races: BaseRace[] = results.map((race) => {
-    return { name: race.name, asi: createAS(race.asi), subraces: race.subraces }
-})
+export const parsed_races: BaseRace[] = results
 
 const parsedBaseDwarf = parsed_races.find((race) => race.name === 'Dwarf') ?? HumanBase
 const parsedHillDw = parsedBaseDwarf.subraces[0]
