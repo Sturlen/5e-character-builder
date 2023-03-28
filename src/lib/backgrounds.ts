@@ -4,3 +4,10 @@ export type BaseBackground = {
     toolProfs: string[]
     langProfs: string[]
 }
+
+export const NullBackground: BaseBackground = {
+    name: 'None',
+    langProfs: [],
+    skillProfs: [],
+    toolProfs: []
+}

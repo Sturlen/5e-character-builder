@@ -1,6 +1,6 @@
 import races from './API/races.json'
 import BackgroundsResponse from '$lib/API/backgrounds.json'
-import type { BaseBackground } from '$lib/backgrounds'
+import { NullBackground, type BaseBackground } from '$lib/backgrounds'
 
 import { RaceSchema } from './parsers/races'
 import {
@@ -38,18 +38,15 @@ export function CreateCharacter({
     return { as, race, background, languages }
 }
 
-const NullBackground: BaseBackground = {
-    name: 'None',
-    langProfs: [],
-    skillProfs: [],
-    toolProfs: []
-}
-
-export function createBasicCharacter(
-    baseRace: BaseRace,
-    baseSubrace: BaseSubrace | undefined,
+export function createBasicCharacter({
+    baseRace,
+    baseSubrace,
+    BaseBackground
+}: {
+    baseRace: BaseRace
+    baseSubrace: BaseSubrace | undefined
     BaseBackground: BaseBackground | undefined
-) {
+}) {
     const subrace = baseSubrace ? tailorSubrace(baseSubrace) : undefined
     const race = tailorRace(baseRace, subrace)
     const background = BaseBackground ?? NullBackground

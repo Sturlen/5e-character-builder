@@ -1,8 +1,5 @@
-import BackgroundsResponse from '$lib/API/backgrounds.json'
 import type { BaseBackground } from '$lib/backgrounds'
 import { z } from 'zod'
-
-const raw_backgrounds = BackgroundsResponse.results
 
 function trim(str: string): string {
     return str.trim()

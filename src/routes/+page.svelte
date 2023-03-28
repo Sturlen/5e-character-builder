@@ -7,7 +7,11 @@
     $: available_subraces = chosen_race.subraces
     $: chosen_subrace = available_subraces[0]
     $: chosen_background = backgrounds[0]
-    $: character = createBasicCharacter(chosen_race, chosen_subrace, chosen_background)
+    $: character = createBasicCharacter({
+        baseRace: chosen_race,
+        baseSubrace: chosen_subrace,
+        BaseBackground: chosen_background
+    })
     $: scores = character.as
 </script>
 

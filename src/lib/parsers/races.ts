@@ -3,11 +3,10 @@ import { z, type TypeOf } from 'zod'
 import {
     createAS,
     type AbilityScoreArray,
-    type BaseRace,
-    type BaseSubrace,
     type AbilityScoreOption,
     type Option
 } from '../AbilityScores'
+import type { BaseSubrace, BaseRace } from '../../races'
 
 export const ASISchema = z.array(
     z.object({
