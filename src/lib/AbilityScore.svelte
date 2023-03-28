@@ -1,6 +1,5 @@
 <script lang="ts">
-    import { abilityScoreModifier } from '$lib/character'
-    import type { AbilityName } from '$lib/AbilityScores'
+    import { abilityScoreModifier, type AbilityName } from '$lib/AbilityScores'
     export let name: AbilityName = 'Strength'
     export let score = 10
     $: mod = abilityScoreModifier(score)

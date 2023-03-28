@@ -81,6 +81,11 @@ export function sumAbilityScores(l: AbilityScoreArray, r: AbilityScoreArray): Ab
     }
 }
 
+// From SRD 5.1
+export function abilityScoreModifier(AbilityScore: number) {
+    return Math.floor((AbilityScore - 10) / 2)
+}
+
 export const BaseAttributes: AbilityScoreArray = {
     Strength: 10,
     Dexterity: 10,

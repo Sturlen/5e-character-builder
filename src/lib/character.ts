@@ -54,11 +54,6 @@ export function createBasicCharacter({
     return CreateCharacter({ race, background })
 }
 
-// From SRD 5.1
-function abilityScoreModifier(AbilityScore: number) {
-    return Math.floor((AbilityScore - 10) / 2)
-}
-
 const TestHuman = CreateCharacter({
     race: Human_Standard,
     background: NullBackground
@@ -88,4 +83,4 @@ const parsed_dwarf = CreateCharacter({
     background: NullBackground
 })
 
-export { createAS, abilityScoreModifier, parsed_dwarf, Human_Standard, TestHuman }
+export { createAS, parsed_dwarf, Human_Standard, TestHuman }
