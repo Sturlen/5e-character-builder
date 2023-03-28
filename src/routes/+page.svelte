@@ -1,6 +1,14 @@
 <script>
-    import { parsed_dwarf, parsed_races, createBasicCharacter, backgrounds } from '$lib/character'
+    import {
+        parsed_dwarf,
+        parsed_races,
+        createBasicCharacter,
+        backgrounds,
+        createAS,
+        base_scores
+    } from '$lib/character'
     import AbilityScoreArray from '$lib/AbilityScoreArray.svelte'
+    import AbilityScoreInput from '$lib/AbilityScoreInput.svelte'
     const char = parsed_dwarf
 
     $: chosen_race = parsed_races[0]
@@ -10,7 +18,8 @@
     $: character = createBasicCharacter({
         baseRace: chosen_race,
         baseSubrace: chosen_subrace,
-        BaseBackground: chosen_background
+        BaseBackground: chosen_background,
+        scores: $base_scores
     })
     $: scores = character.as
 </script>
@@ -24,6 +33,7 @@
     <h1>John Dungeon</h1>
     <h2>{character.race.base.name} - {character.race.subrace?.base.name ?? ''}</h2>
     <span>
+        <AbilityScoreInput />
         <AbilityScoreArray {scores} />
     </span>
     <select bind:value={chosen_race}>

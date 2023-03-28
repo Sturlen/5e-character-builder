@@ -22,18 +22,21 @@ import {
     Dwarf_Hill,
     HumanBase
 } from '../races'
+import { writable } from 'svelte/store'
 
 export const backgrounds = BackgroundsResponse.results.map((b) => BaseBackgroundSchema.parse(b))
 console.log(backgrounds)
 
 export function CreateCharacter({
     race,
-    background
+    background,
+    scores
 }: {
     race: Race
     background: BaseBackground
+    scores?: AbilityScoreArray
 }): Character {
-    const as = sumAbilityScores(BaseAttributes, createAS(race.asi))
+    const as = sumAbilityScores(scores ?? BaseAttributes, createAS(race.asi))
     const languages = [...new Set([...race.base.languages, ...background.langProfs])] // find a better way to make unique
     return { as, race, background, languages }
 }
@@ -41,17 +44,19 @@ export function CreateCharacter({
 export function createBasicCharacter({
     baseRace,
     baseSubrace,
-    BaseBackground
+    BaseBackground,
+    scores
 }: {
     baseRace: BaseRace
     baseSubrace: BaseSubrace | undefined
     BaseBackground: BaseBackground | undefined
+    scores?: AbilityScoreArray
 }) {
     const subrace = baseSubrace ? tailorSubrace(baseSubrace) : undefined
     const race = tailorRace(baseRace, subrace)
     const background = BaseBackground ?? NullBackground
 
-    return CreateCharacter({ race, background })
+    return CreateCharacter({ race, background, scores })
 }
 
 const TestHuman = CreateCharacter({
@@ -82,5 +87,5 @@ const parsed_dwarf = CreateCharacter({
     race: hill_dwarf_race ?? Human_Standard,
     background: NullBackground
 })
-
+export const base_scores = writable(createAS(BaseAttributes))
 export { createAS, parsed_dwarf, Human_Standard, TestHuman }
