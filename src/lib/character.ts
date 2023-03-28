@@ -3,87 +3,28 @@ import BackgroundsResponse from '$lib/API/backgrounds.json'
 import type { BaseBackground } from '$lib/backgrounds'
 
 import { RaceSchema } from './parsers/races'
-import type {
-    AbilityScoreArray,
-    Character,
-    BaseRace,
-    Subrace,
-    Race,
-    BaseSubrace
+import {
+    type AbilityScoreArray,
+    type Character,
+    sumAbilityScores,
+    BaseAttributes
 } from './AbilityScores'
 
 import { createAS } from './AbilityScores'
 import { BaseBackgroundSchema } from './parsers/backgrounds'
+import {
+    type Race,
+    type BaseRace,
+    type BaseSubrace,
+    tailorSubrace,
+    tailorRace,
+    Human_Standard,
+    Dwarf_Hill,
+    HumanBase
+} from '../races'
 
 export const backgrounds = BackgroundsResponse.results.map((b) => BaseBackgroundSchema.parse(b))
 console.log(backgrounds)
-
-const BaseAttributes: AbilityScoreArray = {
-    Strength: 10,
-    Dexterity: 10,
-    Constitution: 10,
-    Intelligence: 10,
-    Wisdom: 10,
-    Charisma: 10
-}
-
-const HillDwarfBase: BaseSubrace = {
-    name: 'Hill Dwarf',
-    asi: createAS({
-        Wisdom: 1
-    }),
-    options: []
-}
-
-const DwarfBase: BaseRace = {
-    name: 'Dwarf',
-    asi: createAS({ Constitution: 2 }),
-    options: [],
-    subraces: [HillDwarfBase],
-    languages: ['Common', 'Dwarvish']
-}
-
-const HumanBase: BaseRace = {
-    name: 'Human',
-    asi: {
-        Strength: 1,
-        Dexterity: 1,
-        Constitution: 1,
-        Intelligence: 1,
-        Wisdom: 1,
-        Charisma: 1
-    },
-    options: [],
-    subraces: [],
-    languages: ['Common']
-}
-
-function sumAbilityScores(l: AbilityScoreArray, r: AbilityScoreArray): AbilityScoreArray {
-    return {
-        Strength: l.Strength + r.Strength,
-        Dexterity: l.Dexterity + r.Dexterity,
-        Constitution: l.Constitution + r.Constitution,
-        Intelligence: l.Intelligence + r.Intelligence,
-        Wisdom: l.Wisdom + r.Wisdom,
-        Charisma: l.Charisma + r.Charisma
-    }
-}
-
-function tailorSubrace(base: BaseSubrace): Subrace {
-    return { base, asi: createAS(base.asi) }
-}
-
-function tailorRace(base: BaseRace, subrace?: Subrace | undefined): Race {
-    const base_score = createAS(base.asi)
-    const sub_score = createAS(subrace?.asi)
-    return { base, asi: sumAbilityScores(base_score, sub_score), subrace }
-}
-
-const HillDwarf = tailorSubrace(HillDwarfBase)
-
-const Dwarf_Hill = tailorRace(DwarfBase, HillDwarf)
-
-const Human_Standard = tailorRace(HumanBase)
 
 export function CreateCharacter({
     race,
@@ -149,7 +90,5 @@ const parsed_dwarf = CreateCharacter({
     race: hill_dwarf_race ?? Human_Standard,
     background: NullBackground
 })
-
-console.log('Hill Dwarf Wisdom score is 11', parsed_dwarf.as.Wisdom === 11, parsed_dwarf)
 
 export { createAS, abilityScoreModifier, parsed_dwarf, Human_Standard, TestHuman }

@@ -1,51 +1,10 @@
+import type { Race } from '../races'
 import type { BaseBackground } from './backgrounds'
 
 export type AbilityScore = {
     name: string
     desc: string
     icon_src: string
-}
-
-// sum up base + ablity score increases
-
-const Strength: AbilityScore = {
-    name: 'Strength',
-    desc: 'Strength measures bodily power, athletic training, and the extent to which you can exert raw physical force.',
-    icon_src: 'https://game-icons.net/icons/ffffff/000000/1x1/delapouite/biceps.svg'
-}
-const Dexterity: AbilityScore = {
-    name: 'Dexterity',
-    desc: 'Dexterity measures agility, reflexes, and balance.',
-    icon_src: 'https://game-icons.net/icons/ffffff/000000/1x1/delapouite/body-balance.svg'
-}
-const Constitution: AbilityScore = {
-    name: 'Constitution',
-    desc: 'Constitution measures health, stamina, and vital force.',
-    icon_src: 'https://game-icons.net/icons/ffffff/000000/1x1/delapouite/chest-armor.svg'
-}
-const Intelligence: AbilityScore = {
-    name: 'Intelligence',
-    desc: 'Intelligence measures mental acuity, accuracy of recall, and the ability to reason.',
-    icon_src: 'https://game-icons.net/icons/ffffff/000000/1x1/delapouite/smart.svg'
-}
-const Wisdom: AbilityScore = {
-    name: 'Wisdom',
-    desc: 'Wisdom reflects how attuned you are to the world around you and represents perceptiveness and intuition.',
-    icon_src: 'https://game-icons.net/icons/ffffff/000000/1x1/lorc/owl.svg'
-}
-const Charisma: AbilityScore = {
-    name: 'Charisma',
-    desc: 'Charisma measures your ability to interact effectively with others.',
-    icon_src: 'https://game-icons.net/icons/ffffff/000000/1x1/lorc/drama-masks.svg'
-}
-
-export const AbilityScoreInfo = {
-    Strength,
-    Dexterity,
-    Constitution,
-    Intelligence,
-    Wisdom,
-    Charisma
 }
 
 export type AbilityScoreArray = {
@@ -92,37 +51,12 @@ export type Character = {
     languages: string[]
 }
 
-export type BaseRace = {
-    name: string
-    asi: AbilityScoreArray
-    options: Option[]
-    subraces: BaseSubrace[]
-    languages: string[]
-}
-
 /** Character creation choice */
 export type Option = AbilityScoreOption
 
 export type AbilityScoreOption = {
     type: 'asi'
     amount: number
-}
-
-export type Race = {
-    base: BaseRace
-    asi: AbilityScoreArray
-    subrace?: Subrace
-}
-
-export type BaseSubrace = {
-    name: string
-    asi: AbilityScoreArray
-    options: Option[]
-}
-
-export type Subrace = {
-    base: BaseSubrace
-    asi: AbilityScoreArray
 }
 
 export function createAS(as: OptionalAbilityScoreArray = {}): AbilityScoreArray {
@@ -134,6 +68,26 @@ export function createAS(as: OptionalAbilityScoreArray = {}): AbilityScoreArray 
         Wisdom: as.Wisdom || 0,
         Charisma: as.Charisma || 0
     }
+}
+
+export function sumAbilityScores(l: AbilityScoreArray, r: AbilityScoreArray): AbilityScoreArray {
+    return {
+        Strength: l.Strength + r.Strength,
+        Dexterity: l.Dexterity + r.Dexterity,
+        Constitution: l.Constitution + r.Constitution,
+        Intelligence: l.Intelligence + r.Intelligence,
+        Wisdom: l.Wisdom + r.Wisdom,
+        Charisma: l.Charisma + r.Charisma
+    }
+}
+
+export const BaseAttributes: AbilityScoreArray = {
+    Strength: 10,
+    Dexterity: 10,
+    Constitution: 10,
+    Intelligence: 10,
+    Wisdom: 10,
+    Charisma: 10
 }
 
 // Base entiites have options available and with these you can create an actual real instance

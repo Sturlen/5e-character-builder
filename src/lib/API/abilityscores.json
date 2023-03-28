@@ -1,0 +1,32 @@
+{
+    "Strength": {
+        "name": "Strength",
+        "desc": "Strength measures bodily power, athletic training, and the extent to which you can exert raw physical force.",
+        "icon_src": "https://game-icons.net/icons/ffffff/000000/1x1/delapouite/biceps.svg"
+    },
+    "Dexterity": {
+        "name": "Dexterity",
+        "desc": "Dexterity measures agility, reflexes, and balance.",
+        "icon_src": "https://game-icons.net/icons/ffffff/000000/1x1/delapouite/body-balance.svg"
+    },
+    "Constitution": {
+        "name": "Constitution",
+        "desc": "Constitution measures health, stamina, and vital force.",
+        "icon_src": "https://game-icons.net/icons/ffffff/000000/1x1/delapouite/chest-armor.svg"
+    },
+    "Intelligence": {
+        "name": "Intelligence",
+        "desc": "Intelligence measures mental acuity, accuracy of recall, and the ability to reason.",
+        "icon_src": "https://game-icons.net/icons/ffffff/000000/1x1/delapouite/smart.svg"
+    },
+    "Wisdom": {
+        "name": "Wisdom",
+        "desc": "Wisdom reflects how attuned you are to the world around you and represents perceptiveness and intuition.",
+        "icon_src": "https://game-icons.net/icons/ffffff/000000/1x1/lorc/owl.svg"
+    },
+    "Charisma": {
+        "name": "Charisma",
+        "desc": "Charisma measures your ability to interact effectively with others.",
+        "icon_src": "https://game-icons.net/icons/ffffff/000000/1x1/lorc/drama-masks.svg"
+    }
+}
