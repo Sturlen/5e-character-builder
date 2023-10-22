@@ -1,8 +1,5 @@
 {
     "name": "5e-character-builder",
-    "engines": {
-        "node": "18.9.0"
-    },
     "version": "0.0.1",
     "scripts": {
         "dev": "vite dev",
