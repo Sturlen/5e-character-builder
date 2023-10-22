@@ -31,20 +31,26 @@
 
 <section>
     <h1>John Dungeon</h1>
-    <h2>{character.race.base.name} - {character.race.subrace?.base.name ?? ''}</h2>
+    <p>{character.race.base.name} - {character.race.subrace?.base.name ?? ''}</p>
+
+    <h2>Base Ability Scores</h2>
+    <AbilityScoreInput />
+    <h2>Ability Scores (modifier)</h2>
     <span>
-        <AbilityScoreInput />
         <AbilityScoreArray {scores} />
     </span>
+    <h2>Race</h2>
     <select bind:value={chosen_race}>
         {#each parsed_races as race}
             <option value={race}>{race.name}</option>
         {/each}
     </select>
+
     {#each chosen_race.options as option}
         <p>+{option.amount} to a chosen attribute</p>
     {/each}
     {#if available_subraces.length > 0}
+        <h2>Subrace</h2>
         <select bind:value={chosen_subrace}>
             {#each available_subraces as subrace}
                 <option value={subrace}>{subrace.name}</option>
@@ -52,20 +58,24 @@
         </select>
     {/if}
 
+    <h2>Background</h2>
     <select bind:value={chosen_background}>
         {#each backgrounds as background}
             <option value={background}>{background.name}</option>
         {/each}
     </select>
-    <p>Languages</p>
+
+    <h2>Languages</h2>
     {#each character.languages as prof}
         <span>{prof}</span>
     {/each}
-    <p>Skill Proficiencies</p>
+
+    <h2>Skill Proficiencies</h2>
     {#each character.background.skillProfs as prof}
         <span>{prof}</span>
     {/each}
-    <p>Tool Proficiencies</p>
+
+    <h2>Tool Proficiencies</h2>
     {#each character.background.toolProfs as prof}
         <span>{prof}</span>
     {/each}
@@ -82,5 +92,12 @@
 
     h1 {
         width: 100%;
+    }
+
+    h2 {
+        width: 60%;
+        text-align: left;
+        font-weight: bold;
+        border-bottom: 1px solid black;
     }
 </style>
