@@ -1,6 +1,6 @@
-# create-svelte
+# 5e Character Builder
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+First attempt at a character builder using Open5e data. data is cached rather than hitting the live API. Uses immutable data structures, which should make it possible connect which item added which bouns and etc. Clone, fork or copy as you like.
 
 ## Creating a project
 
